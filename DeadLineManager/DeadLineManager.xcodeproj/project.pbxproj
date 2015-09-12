@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		76065CBF1BA45F6600ED8988 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CBE1BA45F6600ED8988 /* main.m */; };
+		76065CC21BA45F6600ED8988 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CC11BA45F6600ED8988 /* AppDelegate.m */; };
+		76065CC51BA45F6600ED8988 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CC41BA45F6600ED8988 /* ViewController.m */; };
+		76065CC81BA45F6600ED8988 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76065CC61BA45F6600ED8988 /* Main.storyboard */; };
+		76065CCA1BA45F6600ED8988 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76065CC91BA45F6600ED8988 /* Images.xcassets */; };
+		76065CCD1BA45F6600ED8988 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76065CCB1BA45F6600ED8988 /* LaunchScreen.xib */; };
+		76065CD91BA45F6600ED8988 /* DeadLineManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CD81BA45F6600ED8988 /* DeadLineManagerTests.m */; };
+		76065CED1BA4603900ED8988 /* AddEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CEB1BA4603900ED8988 /* AddEventCell.m */; };
+		76065CEE1BA4603900ED8988 /* AddEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76065CEC1BA4603900ED8988 /* AddEventCell.xib */; };
+		76065CF11BA4605900ED8988 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CF01BA4605900ED8988 /* DBManager.m */; };
+		76065CF41BA460A000ED8988 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CF31BA460A000ED8988 /* AddEventViewController.m */; };
+		76065CF61BA461CE00ED8988 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 76065CF51BA461CE00ED8988 /* libsqlite3.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		76065CD31BA45F6600ED8988 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76065CB11BA45F6600ED8988 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76065CB81BA45F6600ED8988;
+			remoteInfo = DeadLineManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		76065CB91BA45F6600ED8988 /* DeadLineManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeadLineManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76065CBD1BA45F6600ED8988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76065CBE1BA45F6600ED8988 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		76065CC01BA45F6600ED8988 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		76065CC11BA45F6600ED8988 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		76065CC31BA45F6600ED8988 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = DeadLineManager/ViewController.h; sourceTree = "<group>"; };
+		76065CC41BA45F6600ED8988 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = DeadLineManager/ViewController.m; sourceTree = "<group>"; };
+		76065CC71BA45F6600ED8988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		76065CC91BA45F6600ED8988 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		76065CCC1BA45F6600ED8988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		76065CD21BA45F6600ED8988 /* DeadLineManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadLineManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76065CD71BA45F6600ED8988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76065CD81BA45F6600ED8988 /* DeadLineManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeadLineManagerTests.m; sourceTree = "<group>"; };
+		76065CEA1BA4603900ED8988 /* AddEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventCell.h; sourceTree = "<group>"; };
+		76065CEB1BA4603900ED8988 /* AddEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventCell.m; sourceTree = "<group>"; };
+		76065CEC1BA4603900ED8988 /* AddEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventCell.xib; sourceTree = "<group>"; };
+		76065CEF1BA4605900ED8988 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		76065CF01BA4605900ED8988 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		76065CF21BA460A000ED8988 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
+		76065CF31BA460A000ED8988 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
+		76065CF51BA461CE00ED8988 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76065CB61BA45F6600ED8988 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76065CF61BA461CE00ED8988 /* libsqlite3.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76065CCF1BA45F6600ED8988 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76065CB01BA45F6600ED8988 = {
+			isa = PBXGroup;
+			children = (
+				76065CBB1BA45F6600ED8988 /* DeadLineManager */,
+				76065CD51BA45F6600ED8988 /* DeadLineManagerTests */,
+				76065CBA1BA45F6600ED8988 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		76065CBA1BA45F6600ED8988 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76065CB91BA45F6600ED8988 /* DeadLineManager.app */,
+				76065CD21BA45F6600ED8988 /* DeadLineManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76065CBB1BA45F6600ED8988 /* DeadLineManager */ = {
+			isa = PBXGroup;
+			children = (
+				76065CF91BA462BF00ED8988 /* DBManager */,
+				76065CF81BA462A200ED8988 /* ViewController */,
+				76065CF71BA4625500ED8988 /* Cell */,
+				76065CC61BA45F6600ED8988 /* Main.storyboard */,
+				76065CCB1BA45F6600ED8988 /* LaunchScreen.xib */,
+				76065CC91BA45F6600ED8988 /* Images.xcassets */,
+				76065CBC1BA45F6600ED8988 /* Supporting Files */,
+			);
+			path = DeadLineManager;
+			sourceTree = "<group>";
+		};
+		76065CBC1BA45F6600ED8988 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76065CC11BA45F6600ED8988 /* AppDelegate.m */,
+				76065CC01BA45F6600ED8988 /* AppDelegate.h */,
+				76065CBD1BA45F6600ED8988 /* Info.plist */,
+				76065CBE1BA45F6600ED8988 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76065CD51BA45F6600ED8988 /* DeadLineManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				76065CD81BA45F6600ED8988 /* DeadLineManagerTests.m */,
+				76065CD61BA45F6600ED8988 /* Supporting Files */,
+			);
+			path = DeadLineManagerTests;
+			sourceTree = "<group>";
+		};
+		76065CD61BA45F6600ED8988 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76065CD71BA45F6600ED8988 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76065CF71BA4625500ED8988 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				76065CEC1BA4603900ED8988 /* AddEventCell.xib */,
+				76065CEB1BA4603900ED8988 /* AddEventCell.m */,
+				76065CEA1BA4603900ED8988 /* AddEventCell.h */,
+			);
+			name = Cell;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		76065CF81BA462A200ED8988 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				76065CF21BA460A000ED8988 /* AddEventViewController.h */,
+				76065CF31BA460A000ED8988 /* AddEventViewController.m */,
+				76065CC31BA45F6600ED8988 /* ViewController.h */,
+				76065CC41BA45F6600ED8988 /* ViewController.m */,
+			);
+			name = ViewController;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		76065CF91BA462BF00ED8988 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				76065CF01BA4605900ED8988 /* DBManager.m */,
+				76065CEF1BA4605900ED8988 /* DBManager.h */,
+				76065CF51BA461CE00ED8988 /* libsqlite3.dylib */,
+			);
+			name = DBManager;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		76065CB81BA45F6600ED8988 /* DeadLineManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76065CDC1BA45F6600ED8988 /* Build configuration list for PBXNativeTarget "DeadLineManager" */;
+			buildPhases = (
+				76065CB51BA45F6600ED8988 /* Sources */,
+				76065CB61BA45F6600ED8988 /* Frameworks */,
+				76065CB71BA45F6600ED8988 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeadLineManager;
+			productName = DeadLineManager;
+			productReference = 76065CB91BA45F6600ED8988 /* DeadLineManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		76065CD11BA45F6600ED8988 /* DeadLineManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76065CDF1BA45F6600ED8988 /* Build configuration list for PBXNativeTarget "DeadLineManagerTests" */;
+			buildPhases = (
+				76065CCE1BA45F6600ED8988 /* Sources */,
+				76065CCF1BA45F6600ED8988 /* Frameworks */,
+				76065CD01BA45F6600ED8988 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76065CD41BA45F6600ED8988 /* PBXTargetDependency */,
+			);
+			name = DeadLineManagerTests;
+			productName = DeadLineManagerTests;
+			productReference = 76065CD21BA45F6600ED8988 /* DeadLineManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		76065CB11BA45F6600ED8988 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = cookie;
+				TargetAttributes = {
+					76065CB81BA45F6600ED8988 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					76065CD11BA45F6600ED8988 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 76065CB81BA45F6600ED8988;
+					};
+				};
+			};
+			buildConfigurationList = 76065CB41BA45F6600ED8988 /* Build configuration list for PBXProject "DeadLineManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 76065CB01BA45F6600ED8988;
+			productRefGroup = 76065CBA1BA45F6600ED8988 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				76065CB81BA45F6600ED8988 /* DeadLineManager */,
+				76065CD11BA45F6600ED8988 /* DeadLineManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		76065CB71BA45F6600ED8988 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76065CEE1BA4603900ED8988 /* AddEventCell.xib in Resources */,
+				76065CC81BA45F6600ED8988 /* Main.storyboard in Resources */,
+				76065CCD1BA45F6600ED8988 /* LaunchScreen.xib in Resources */,
+				76065CCA1BA45F6600ED8988 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76065CD01BA45F6600ED8988 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76065CB51BA45F6600ED8988 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76065CED1BA4603900ED8988 /* AddEventCell.m in Sources */,
+				76065CC51BA45F6600ED8988 /* ViewController.m in Sources */,
+				76065CC21BA45F6600ED8988 /* AppDelegate.m in Sources */,
+				76065CF41BA460A000ED8988 /* AddEventViewController.m in Sources */,
+				76065CBF1BA45F6600ED8988 /* main.m in Sources */,
+				76065CF11BA4605900ED8988 /* DBManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76065CCE1BA45F6600ED8988 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76065CD91BA45F6600ED8988 /* DeadLineManagerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76065CD41BA45F6600ED8988 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76065CB81BA45F6600ED8988 /* DeadLineManager */;
+			targetProxy = 76065CD31BA45F6600ED8988 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		76065CC61BA45F6600ED8988 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76065CC71BA45F6600ED8988 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		76065CCB1BA45F6600ED8988 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76065CCC1BA45F6600ED8988 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		76065CDA1BA45F6600ED8988 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		76065CDB1BA45F6600ED8988 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		76065CDD1BA45F6600ED8988 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DeadLineManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		76065CDE1BA45F6600ED8988 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DeadLineManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		76065CE01BA45F6600ED8988 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DeadLineManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeadLineManager.app/DeadLineManager";
+			};
+			name = Debug;
+		};
+		76065CE11BA45F6600ED8988 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DeadLineManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeadLineManager.app/DeadLineManager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76065CB41BA45F6600ED8988 /* Build configuration list for PBXProject "DeadLineManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76065CDA1BA45F6600ED8988 /* Debug */,
+				76065CDB1BA45F6600ED8988 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76065CDC1BA45F6600ED8988 /* Build configuration list for PBXNativeTarget "DeadLineManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76065CDD1BA45F6600ED8988 /* Debug */,
+				76065CDE1BA45F6600ED8988 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		76065CDF1BA45F6600ED8988 /* Build configuration list for PBXNativeTarget "DeadLineManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76065CE01BA45F6600ED8988 /* Debug */,
+				76065CE11BA45F6600ED8988 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 76065CB11BA45F6600ED8988 /* Project object */;
+}
