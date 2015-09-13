@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol  NoteViewDelegate
+
+-(void)noteFinshEdit;
+
+@end
+
 @interface NoteViewController : UIViewController
+
+@property (strong,nonatomic) id<NoteViewDelegate>delagate;
 
 @end

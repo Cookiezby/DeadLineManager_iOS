@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NoteViewController.h"
 
-@interface AddEventViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface AddEventViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NoteViewDelegate>
 
 @end

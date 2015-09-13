@@ -232,10 +232,12 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:2 inSection:0]]==NSOrderedSame){
-        
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Value1Cell"];
+        cell.textLabel.text = @"Description";
+        cell.detailTextLabel.text = @"Add";
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:1]]==NSOrderedSame) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DateCell"];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Value1Cell"];
         cell.textLabel.text = @"DeadLine";
         cell.detailTextLabel.text = [self dateString:self.deadLine];
     }

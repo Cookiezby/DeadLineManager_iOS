@@ -114,11 +114,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="rgL-vh-UFr">
+                                <rect key="frame" x="0.0" y="76" width="600" height="524"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rgL-vh-UFr" firstAttribute="top" secondItem="iYR-qe-Ya6" secondAttribute="bottom" constant="12" id="2CJ-YH-cHa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iYR-qe-Ya6" secondAttribute="trailing" constant="-16" id="39B-Tk-GHv"/>
                             <constraint firstItem="iYR-qe-Ya6" firstAttribute="top" secondItem="EH4-Nc-YPC" secondAttribute="bottom" id="5NR-px-1ra"/>
+                            <constraint firstItem="rgL-vh-UFr" firstAttribute="leading" secondItem="Gdh-Ru-H9J" secondAttribute="leadingMargin" constant="-16" id="gbW-FP-rPu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rgL-vh-UFr" secondAttribute="trailing" constant="-16" id="uDN-qY-pmB"/>
                             <constraint firstItem="iYR-qe-Ya6" firstAttribute="leading" secondItem="Gdh-Ru-H9J" secondAttribute="leadingMargin" constant="-16" id="yzO-Vg-M5z"/>
                         </constraints>
                     </view>
@@ -126,6 +135,9 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="R2T-hH-uk3"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="dbz-xq-Guh"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="rgL-vh-UFr" id="3yx-dI-gmK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6c-xV-Jp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
