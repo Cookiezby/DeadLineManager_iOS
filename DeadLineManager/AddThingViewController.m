@@ -7,6 +7,7 @@
 //
 
 #import "AddEventViewController.h"
+#import "Masonry.h"
 
 @interface AddEventViewController ()
 
@@ -16,6 +17,14 @@
 @property (strong,nonatomic) NSMutableString* note;
 @property (strong,nonatomic) NSString* eventName;
 @property (strong,nonatomic) NSDate* date;
+@property (strong,nonatomic) UIButton* showTagRowButton;
+
+@property (strong,nonatomic) UIButton* tagButton_1;
+@property (strong,nonatomic) UIButton* tagButton_2;
+@property (strong,nonatomic) UIButton* tagButton_3;
+
+@property (strong,nonatomic) NSDate* deadLine;
+
 
 @property CGFloat datePickerCellHeight;
 @property CGFloat tagCellHeight;
@@ -43,16 +52,93 @@
     self.datePickerCellHeight = 0;
     self.tagCellHeight = 0;
     
-    self.datePicker  = [[UIDatePicker alloc]init];
+    self.datePicker  = [UIDatePicker new];
     self.datePicker.alpha = 0;
-   }
+    [self.datePicker addTarget:self action:@selector(updateDateCell:) forControlEvents:UIControlEventValueChanged];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    self.datePicker.minimumDate = [NSDate date];
+    
+    self.deadLine = [NSDate date];
+    
+    self.eventNameTextField = [UITextField new];
+    self.showTagRowButton = [UIButton new];
+    [self.showTagRowButton addTarget:self action:@selector(showTagCellButton:) forControlEvents:UIControlEventTouchUpInside];
+    self.tagButton_1 = [UIButton new];
+    self.tagButton_2 = [UIButton new];
+    self.tagButton_3 = [UIButton new];
+    self.tagButton_1.tag = 100;
+    self.tagButton_2.tag = 101;
+    self.tagButton_3.tag = 102;
+    self.tagButton_1.backgroundColor = [UIColor greenColor];
+    self.tagButton_2.backgroundColor = [UIColor yellowColor];
+    self.tagButton_3.backgroundColor = [UIColor redColor];
+    [self.tagButton_1 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.tagButton_2 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.tagButton_3 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
 
-- (void)showTagCell{
     
 }
 
-- (void)hideTagCell{
+- (IBAction)showTagCellButton:(id)sender{
+    self.tagCellHeight = self.tagCellHeight == 0 ? 44:0;
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    self.tagCellHeight != 0 ? [self showTagCell]:[self hideTagCell];
+}
+
+- (IBAction)tagCellButton:(id)sender{
+    UIButton* button = (UIButton*)sender;
+    switch (button.tag) {
+        case 100:
+            NSLog(@"1");
+            break;
+        case 101:
+            NSLog(@"2");
+            break;
+        case 102:
+            NSLog(@"3");
+            break;
+        default:
+            break;
+    }
+}
+
+- (IBAction)updateDateCell:(id)sender{
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    self.deadLine = self.datePicker.date;
+    cell.detailTextLabel.text = [self dateString:self.deadLine];
+}
+
+- (void)showTagCell{
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    [cell addSubview:self.tagButton_1];
+    [cell addSubview:self.tagButton_2];
+    [cell addSubview:self.tagButton_3];
     
+    [self.tagButton_1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(24, 24));
+        make.top.equalTo(@10);
+        make.left.equalTo(@20);
+        
+    }];
+    [self.tagButton_2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(24, 24));
+        make.top.equalTo(@10);
+        make.center.equalTo(cell);
+        
+    }];
+    [self.tagButton_3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(24, 24));
+        make.top.equalTo(@10);
+        make.right.equalTo(@-20);
+        
+    }];
+
+}
+
+- (void)hideTagCell{
+    [self.tagButton_1 removeFromSuperview];
+    [self.tagButton_2 removeFromSuperview];
+    [self.tagButton_3 removeFromSuperview];
 }
 
 - (void)showDatePickerCell{
@@ -71,6 +157,12 @@
 
 }
 
+- (NSString*)dateString:(NSDate*)date{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents* dateCompontents = [calendar components:(NSYearCalendarUnit| NSMonthCalendarUnit| NSDayCalendarUnit) fromDate:date];
+    NSString* dateString = [NSString stringWithFormat:@"%ld/%ld/%ld",dateCompontents.year,dateCompontents.month,dateCompontents.day];
+    return dateString;
+}
 
 - (IBAction)saveEvent:(id)sender{
     [self dismissViewControllerAnimated:YES completion:^(){}];
@@ -121,16 +213,31 @@
     }
     
     if([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:0]]==NSOrderedSame){
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell addSubview:self.eventNameTextField];
+        self.eventNameTextField.placeholder = @"EventName";
+        [self.eventNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+             make.edges.equalTo(cell).with.insets(UIEdgeInsetsMake(2, 15, 2, 50));
+            //top left bottom right
+        }];
+        self.showTagRowButton.backgroundColor = [UIColor blackColor];
+        [cell addSubview:self.showTagRowButton];
+        [self.showTagRowButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(24, 24));
+            make.top.equalTo(@10);
+            make.right.equalTo(@-20);
+        }];
     }
-    if ([indexPath compare:[NSIndexPath indexPathForRow:1 inSection:0]]==NSOrderedSame) {
-    
+    if([indexPath compare:[NSIndexPath indexPathForRow:1 inSection:0]]==NSOrderedSame) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:2 inSection:0]]==NSOrderedSame){
         
     }
-    if ([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:1]]==NSOrderedSame) {
-        
+    if([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:1]]==NSOrderedSame) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DateCell"];
+        cell.textLabel.text = @"DeadLine";
+        cell.detailTextLabel.text = [self dateString:self.deadLine];
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:1 inSection:1]]==NSOrderedSame){
         
@@ -143,17 +250,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:0]]==NSOrderedSame){
-        self.tagCellHeight = self.tagCellHeight == 0 ? 44:0;
-        [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-        self.tagCellHeight != 0 ? [self showTagCell]:[self hideTagCell];
+    
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:1 inSection:0]]==NSOrderedSame){
         
     }
-    if ([indexPath compare:[NSIndexPath indexPathForRow:2 inSection:0]]==NSOrderedSame) {
+    if([indexPath compare:[NSIndexPath indexPathForRow:2 inSection:0]]==NSOrderedSame) {
         [self performSegueWithIdentifier:@"addNoteSegue" sender:self];
     }
-    if ([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:1]]==NSOrderedSame) {
+    if([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:1]]==NSOrderedSame) {
         self.datePickerCellHeight = self.datePickerCellHeight == 0 ? 200:0;
         [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
         self.datePickerCellHeight != 0 ? [self showDatePickerCell]:[self hideDatePickerCell];
@@ -176,8 +281,6 @@
     if ([segue.identifier isEqualToString:@"addNoteSegue"]) {
         
     }
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 
