@@ -37,11 +37,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initTableView];
     [self addTap];
     [self initDatePicker];
+    self.date = [NSDate date];
+    [self initTableView];
     self.dbManager = [[DBManager alloc]initWithDatabaseFilename:@"event.sql"];
-     // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,7 +91,6 @@
     NSIndexPath *placeCellPath = [[NSIndexPath alloc] initWithIndexes:placeCellIndex length:2];
     AddEventCell* nameCell = (AddEventCell*)[self.tableView cellForRowAtIndexPath:nameCellPath];
     AddEventCell* placeCell = (AddEventCell*)[self.tableView cellForRowAtIndexPath:placeCellPath];
-    AddEventCell* descriptionCell;
     [nameCell.textField resignFirstResponder];
     [placeCell.textField resignFirstResponder];
 }
@@ -113,11 +113,6 @@
     [UIView animateWithDuration:0.5 animations:^(){
         self.datePicker.alpha = 1;
     }];
-   
-}
-
-- (void)initEventFilePath{
-    
 }
 
 - (NSString*)dateString:(NSDate*)date{
@@ -182,6 +177,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.datePickedOnShow) {
         return ([indexPath compare:DATEPICKER_CELL_INDEX] == NSOrderedSame ? self.datePickerHeight : 44);
+    }else if(indexPath.section == 2){
+        return 200;
     }else{
         return 44;
     }
@@ -192,7 +189,7 @@
     
     if([indexPath compare:DATE_CELL_INDEX]==NSOrderedSame){
         if (!self.datePickedOnShow) {
-            if(self.section_1_Count < 3){
+            if(self.section_1_Count < 2){
                 self.section_1_Count ++;
                 self.datePickedOnShow = YES;
                 [self insertDatePickerCell:DATEPICKER_CELL_INDEX];
@@ -220,7 +217,7 @@
             return self.section_1_Count;
             break;
         case 2:
-            return 1;
+            return 0;
         default:
             return 0;
             break;
@@ -243,7 +240,6 @@
             cell.detailTextLabel.textColor = [UIColor redColor];
             if (!self.datePickedOnShow) {
                 cell.detailTextLabel.text = [self dateString:[NSDate date]];
-                self.date = [NSDate date];
             }else{
                 cell.detailTextLabel.text = [self dateString:self.datePicker.date];
                 self.date = self.datePicker.date;
@@ -259,6 +255,7 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AddThingsCell"];
 
         }
+        [cell setNeedsLayout];
         return cell;
     }
 }
