@@ -18,8 +18,8 @@
 		76065CEE1BA4603900ED8988 /* AddEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76065CEC1BA4603900ED8988 /* AddEventCell.xib */; };
 		76065CF11BA4605900ED8988 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CF01BA4605900ED8988 /* DBManager.m */; };
 		76065CF61BA461CE00ED8988 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 76065CF51BA461CE00ED8988 /* libsqlite3.dylib */; };
-		76065CFC1BA5125500ED8988 /* AddThingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CFB1BA5125500ED8988 /* AddThingViewController.m */; };
 		76065D001BA51B3300ED8988 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CFF1BA51B3300ED8988 /* NoteViewController.m */; };
+		7673475E1BA7CABB007B0775 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7673475D1BA7CABB007B0775 /* AddViewController.m */; };
 		C93F41B236D59A34794E929C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C065281623EF3C80723E221F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,10 +54,10 @@
 		76065CEF1BA4605900ED8988 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		76065CF01BA4605900ED8988 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		76065CF51BA461CE00ED8988 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		76065CFA1BA5125500ED8988 /* AddThingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddThingViewController.h; sourceTree = "<group>"; };
-		76065CFB1BA5125500ED8988 /* AddThingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddThingViewController.m; sourceTree = "<group>"; };
 		76065CFE1BA51B3300ED8988 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
 		76065CFF1BA51B3300ED8988 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
+		7673475C1BA7CABB007B0775 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		7673475D1BA7CABB007B0775 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		A5E9F109F77B23C5F4E86C28 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C065281623EF3C80723E221F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -167,12 +167,12 @@
 		76065CF81BA462A200ED8988 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				76065CFB1BA5125500ED8988 /* AddThingViewController.m */,
-				76065CFA1BA5125500ED8988 /* AddThingViewController.h */,
 				76065CC31BA45F6600ED8988 /* ViewController.h */,
 				76065CC41BA45F6600ED8988 /* ViewController.m */,
 				76065CFE1BA51B3300ED8988 /* NoteViewController.h */,
 				76065CFF1BA51B3300ED8988 /* NoteViewController.m */,
+				7673475C1BA7CABB007B0775 /* AddViewController.h */,
+				7673475D1BA7CABB007B0775 /* AddViewController.m */,
 			);
 			name = ViewController;
 			path = ..;
@@ -345,8 +345,8 @@
 				76065CC51BA45F6600ED8988 /* ViewController.m in Sources */,
 				76065CC21BA45F6600ED8988 /* AppDelegate.m in Sources */,
 				76065D001BA51B3300ED8988 /* NoteViewController.m in Sources */,
-				76065CFC1BA5125500ED8988 /* AddThingViewController.m in Sources */,
 				76065CBF1BA45F6600ED8988 /* main.m in Sources */,
+				7673475E1BA7CABB007B0775 /* AddViewController.m in Sources */,
 				76065CF11BA4605900ED8988 /* DBManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

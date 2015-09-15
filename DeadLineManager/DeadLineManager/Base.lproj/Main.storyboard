@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="1045" y="429"/>
         </scene>
-        <!--Add Event View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="t2q-DK-Na0">
             <objects>
-                <viewController id="8Id-t8-Tm7" customClass="AddEventViewController" sceneMemberID="viewController">
+                <viewController id="8Id-t8-Tm7" customClass="AddViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q0q-jY-hDH"/>
                         <viewControllerLayoutGuide type="bottom" id="c44-0o-HZU"/>
@@ -64,7 +64,7 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="BnH-1L-Ou6">
                                 <rect key="frame" x="0.0" y="63" width="600" height="537"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <sections/>
                             </tableView>
                         </subviews>
@@ -110,7 +110,11 @@
                                                 <action selector="cancelEdit:" destination="P5Q-Ey-RL6" id="Ysa-6q-pjL"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VKH-qd-qSV"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VKH-qd-qSV">
+                                            <connections>
+                                                <action selector="doneEdit:" destination="P5Q-Ey-RL6" id="gaA-p1-Iao"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

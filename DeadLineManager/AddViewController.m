@@ -6,15 +6,14 @@
 //  Copyright (c) 2015年 cookie. All rights reserved.
 //
 
-#import "AddEventViewController.h"
+#import "AddViewController.h"
 #import "Masonry.h"
 
-@interface AddEventViewController ()
+@interface AddViewController ()
 
 @property (strong,nonatomic) IBOutlet UITableView* tableView;
 @property (strong,nonatomic) UIDatePicker* datePicker;
 @property (strong,nonatomic) UITextField* eventNameTextField;
-@property (strong,nonatomic) NSMutableString* note;
 @property (strong,nonatomic) NSString* eventName;
 @property (strong,nonatomic) NSDate* date;
 @property (strong,nonatomic) UIButton* showTagRowButton;
@@ -31,7 +30,7 @@
 
 @end
 
-@implementation AddEventViewController
+@implementation AddViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +46,7 @@
 
 
 - (void)initProperty{
+    self.note = [NSMutableString stringWithFormat:@"%@",@""];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.datePickerCellHeight = 0;
@@ -75,7 +75,7 @@
     [self.tagButton_1 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.tagButton_2 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.tagButton_3 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     
 }
 
@@ -132,7 +132,7 @@
         make.right.equalTo(@-20);
         
     }];
-
+    
 }
 
 - (void)hideTagCell{
@@ -154,7 +154,7 @@
     [UIView animateWithDuration:0.5 animations:^(){
         self.datePicker.alpha = 0;
     }];
-
+    
 }
 
 - (NSString*)dateString:(NSDate*)date{
@@ -174,10 +174,8 @@
 
 #pragma mark - NoteViewDelegate
 
-- (void)noteFinishEdit{
-    
-    NSLog(@"edit finish");
-
+- (void)noteFinshEdit:(NSString* )noteString{
+    self.note = [[NSMutableString alloc]initWithFormat:@"%@",noteString];
 }
 #pragma mark - UITableViewDelegate
 
@@ -224,7 +222,7 @@
         [cell addSubview:self.eventNameTextField];
         self.eventNameTextField.placeholder = @"EventName";
         [self.eventNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-             make.edges.equalTo(cell).with.insets(UIEdgeInsetsMake(2, 15, 2, 50));
+            make.edges.equalTo(cell).with.insets(UIEdgeInsetsMake(2, 15, 2, 50));
             //top left bottom right
         }];
         self.showTagRowButton.backgroundColor = [UIColor blackColor];
@@ -259,7 +257,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:0]]==NSOrderedSame){
-    
+        
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:1 inSection:0]]==NSOrderedSame){
         
@@ -273,12 +271,10 @@
         self.datePickerCellHeight != 0 ? [self showDatePickerCell]:[self hideDatePickerCell];
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:1 inSection:1]]==NSOrderedSame){
-    
+        
         
     }
 }
-
-
 
 
 
@@ -289,7 +285,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"addNoteSegue"]) {
         NoteViewController* noteViewController = segue.destinationViewController;
-        
+        noteViewController.delegate = self;
+        noteViewController.note = [NSMutableString stringWithFormat:@"%@",self.note];
     }
 }
 
