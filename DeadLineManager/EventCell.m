@@ -15,6 +15,7 @@
 @property (strong,nonatomic) IBOutlet UILabel* eventDaysLeft;
 @property (strong,nonatomic) IBOutlet UILabel* eventPriority;
 
+
 @end
 
 
@@ -23,6 +24,9 @@
 - (void)awakeFromNib {
     // Initialization code
     [super awakeFromNib];
+    //[self addSubview:self.eventName];
+    //[self addSubview:self.eventDaysLeft];
+    //[self addSubview:self.eventPriority];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -33,11 +37,21 @@
 
 - (void)initProperty{
    
+    
+    
 }
 
 + (UINib*)nib{
     return [UINib nibWithNibName:@"EventCell" bundle:[NSBundle mainBundle]];
 }
+
+- (void)setLabel:(NSMutableDictionary*)values{
+    self.eventName.text = values[@"eventname"];
+    self.eventPriority.text = values[@"eventpriority"];
+    self.eventDaysLeft.text = values[@"eventdeadline"];
+}
+    
+
 
 
 @end

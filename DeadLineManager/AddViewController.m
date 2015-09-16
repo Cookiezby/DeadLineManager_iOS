@@ -57,6 +57,7 @@
     self.datePickerCellHeight = 0;
     self.tagCellHeight = 0;
     
+    
     self.datePicker  = [UIDatePicker new];
     self.datePicker.alpha = 0;
     [self.datePicker addTarget:self action:@selector(updateDateCell:) forControlEvents:UIControlEventValueChanged];
@@ -180,6 +181,8 @@
     [dateformatter setDateFormat:@"yyyy-MM-dd"];
     NSString* dateString = [dateformatter stringFromDate:self.date];
     NSString* query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.note,dateString];
+    
+    NSLog(@"%@",dateString);
     
     [self.dbManager executeQuery:query];
     

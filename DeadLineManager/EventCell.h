@@ -12,4 +12,6 @@
 
 + (UINib*)nib;
 
+- (void)setLabel:(NSMutableDictionary*)values;
+
 @end
