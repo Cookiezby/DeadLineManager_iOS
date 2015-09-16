@@ -14,12 +14,13 @@
 		76065CCA1BA45F6600ED8988 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76065CC91BA45F6600ED8988 /* Images.xcassets */; };
 		76065CCD1BA45F6600ED8988 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76065CCB1BA45F6600ED8988 /* LaunchScreen.xib */; };
 		76065CD91BA45F6600ED8988 /* DeadLineManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CD81BA45F6600ED8988 /* DeadLineManagerTests.m */; };
-		76065CED1BA4603900ED8988 /* AddEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CEB1BA4603900ED8988 /* AddEventCell.m */; };
-		76065CEE1BA4603900ED8988 /* AddEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76065CEC1BA4603900ED8988 /* AddEventCell.xib */; };
 		76065CF11BA4605900ED8988 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CF01BA4605900ED8988 /* DBManager.m */; };
 		76065CF61BA461CE00ED8988 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 76065CF51BA461CE00ED8988 /* libsqlite3.dylib */; };
 		76065D001BA51B3300ED8988 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76065CFF1BA51B3300ED8988 /* NoteViewController.m */; };
 		7673475E1BA7CABB007B0775 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7673475D1BA7CABB007B0775 /* AddViewController.m */; };
+		767347601BA7F609007B0775 /* event.sql in Resources */ = {isa = PBXBuildFile; fileRef = 7673475F1BA7F609007B0775 /* event.sql */; };
+		767347641BA93F25007B0775 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 767347621BA93F25007B0775 /* EventCell.m */; };
+		767347651BA93F25007B0775 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 767347631BA93F25007B0775 /* EventCell.xib */; };
 		C93F41B236D59A34794E929C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C065281623EF3C80723E221F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,9 +49,6 @@
 		76065CD21BA45F6600ED8988 /* DeadLineManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeadLineManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76065CD71BA45F6600ED8988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76065CD81BA45F6600ED8988 /* DeadLineManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeadLineManagerTests.m; sourceTree = "<group>"; };
-		76065CEA1BA4603900ED8988 /* AddEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventCell.h; sourceTree = "<group>"; };
-		76065CEB1BA4603900ED8988 /* AddEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventCell.m; sourceTree = "<group>"; };
-		76065CEC1BA4603900ED8988 /* AddEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventCell.xib; sourceTree = "<group>"; };
 		76065CEF1BA4605900ED8988 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		76065CF01BA4605900ED8988 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		76065CF51BA461CE00ED8988 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -58,6 +56,10 @@
 		76065CFF1BA51B3300ED8988 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
 		7673475C1BA7CABB007B0775 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		7673475D1BA7CABB007B0775 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		7673475F1BA7F609007B0775 /* event.sql */ = {isa = PBXFileReference; lastKnownFileType = file; name = event.sql; path = ../event.sql; sourceTree = "<group>"; };
+		767347611BA93F25007B0775 /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		767347621BA93F25007B0775 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		767347631BA93F25007B0775 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		A5E9F109F77B23C5F4E86C28 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C065281623EF3C80723E221F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -93,6 +95,7 @@
 		76065CB01BA45F6600ED8988 = {
 			isa = PBXGroup;
 			children = (
+				7673475F1BA7F609007B0775 /* event.sql */,
 				76065CBB1BA45F6600ED8988 /* DeadLineManager */,
 				76065CD51BA45F6600ED8988 /* DeadLineManagerTests */,
 				76065CBA1BA45F6600ED8988 /* Products */,
@@ -156,9 +159,9 @@
 		76065CF71BA4625500ED8988 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				76065CEC1BA4603900ED8988 /* AddEventCell.xib */,
-				76065CEB1BA4603900ED8988 /* AddEventCell.m */,
-				76065CEA1BA4603900ED8988 /* AddEventCell.h */,
+				767347611BA93F25007B0775 /* EventCell.h */,
+				767347621BA93F25007B0775 /* EventCell.m */,
+				767347631BA93F25007B0775 /* EventCell.xib */,
 			);
 			name = Cell;
 			path = ..;
@@ -287,9 +290,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76065CEE1BA4603900ED8988 /* AddEventCell.xib in Resources */,
 				76065CC81BA45F6600ED8988 /* Main.storyboard in Resources */,
+				767347601BA7F609007B0775 /* event.sql in Resources */,
 				76065CCD1BA45F6600ED8988 /* LaunchScreen.xib in Resources */,
+				767347651BA93F25007B0775 /* EventCell.xib in Resources */,
 				76065CCA1BA45F6600ED8988 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,8 +345,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76065CED1BA4603900ED8988 /* AddEventCell.m in Sources */,
 				76065CC51BA45F6600ED8988 /* ViewController.m in Sources */,
+				767347641BA93F25007B0775 /* EventCell.m in Sources */,
 				76065CC21BA45F6600ED8988 /* AppDelegate.m in Sources */,
 				76065D001BA51B3300ED8988 /* NoteViewController.m in Sources */,
 				76065CBF1BA45F6600ED8988 /* main.m in Sources */,

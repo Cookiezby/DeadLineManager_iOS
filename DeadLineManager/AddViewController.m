@@ -8,9 +8,12 @@
 
 #import "AddViewController.h"
 #import "Masonry.h"
+#import "DBManager.h"
 
 @interface AddViewController ()
 
+
+@property (strong,nonatomic) DBManager* dbManager;
 @property (strong,nonatomic) IBOutlet UITableView* tableView;
 @property (strong,nonatomic) UIDatePicker* datePicker;
 @property (strong,nonatomic) UITextField* eventNameTextField;
@@ -21,6 +24,7 @@
 @property (strong,nonatomic) UIButton* tagButton_1;
 @property (strong,nonatomic) UIButton* tagButton_2;
 @property (strong,nonatomic) UIButton* tagButton_3;
+@property (nonatomic)NSInteger eventPriority;
 
 @property (strong,nonatomic) NSDate* deadLine;
 
@@ -46,6 +50,7 @@
 
 
 - (void)initProperty{
+    self.dbManager = [[DBManager alloc]initWithDatabaseFilename:@"event.sql"];
     self.note = [NSMutableString stringWithFormat:@"%@",@""];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -63,6 +68,7 @@
     self.eventNameTextField = [UITextField new];
     self.showTagRowButton = [UIButton new];
     [self.showTagRowButton addTarget:self action:@selector(showTagCellButton:) forControlEvents:UIControlEventTouchUpInside];
+    
     self.tagButton_1 = [UIButton new];
     self.tagButton_2 = [UIButton new];
     self.tagButton_3 = [UIButton new];
@@ -76,7 +82,7 @@
     [self.tagButton_2 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.tagButton_3 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    
+    self.eventPriority = 2;
 }
 
 - (IBAction)showTagCellButton:(id)sender{
@@ -89,13 +95,16 @@
     UIButton* button = (UIButton*)sender;
     switch (button.tag) {
         case 100:
-            NSLog(@"1");
+            self.eventPriority = 0;
+            self.showTagRowButton.backgroundColor = [UIColor greenColor];
             break;
         case 101:
-            NSLog(@"2");
+            self.eventPriority = 1;
+             self.showTagRowButton.backgroundColor = [UIColor yellowColor];
             break;
         case 102:
-            NSLog(@"3");
+            self.eventPriority = 2;
+             self.showTagRowButton.backgroundColor = [UIColor redColor];
             break;
         default:
             break;
@@ -160,11 +169,30 @@
 - (NSString*)dateString:(NSDate*)date{
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents* dateCompontents = [calendar components:(NSYearCalendarUnit| NSMonthCalendarUnit| NSDayCalendarUnit) fromDate:date];
-    NSString* dateString = [NSString stringWithFormat:@"%ld/%ld/%ld",dateCompontents.year,dateCompontents.month,dateCompontents.day];
+    NSString* dateString = [NSString stringWithFormat:@"%ld/%ld/%ld",dateCompontents.year,dateCompontents.month,(long)dateCompontents.day];
     return dateString;
 }
 
 - (IBAction)saveEvent:(id)sender{
+    
+    
+    NSDateFormatter* dateformatter = [[NSDateFormatter alloc]init];
+    [dateformatter setDateFormat:@"yyyy-MM-dd"];
+    NSString* dateString = [dateformatter stringFromDate:self.date];
+    NSString* query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.note,dateString];
+    
+    [self.dbManager executeQuery:query];
+    
+    if (self.dbManager.affectedRows != 0) {
+        NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
+        
+        // Pop the view controller.
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
+        NSLog(@"Could not execute the query.");
+    }
+    
     [self dismissViewControllerAnimated:YES completion:^(){}];
 }
 
@@ -225,7 +253,7 @@
             make.edges.equalTo(cell).with.insets(UIEdgeInsetsMake(2, 15, 2, 50));
             //top left bottom right
         }];
-        self.showTagRowButton.backgroundColor = [UIColor blackColor];
+        self.showTagRowButton.backgroundColor = [UIColor redColor];
         [cell addSubview:self.showTagRowButton];
         [self.showTagRowButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(24, 24));

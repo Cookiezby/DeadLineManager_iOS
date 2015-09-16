@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "NoteViewController.h"
 
+@protocol AddViewDelegate
+
+- (void)addFinish;
+
+@end
+
 @interface AddViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NoteViewDelegate>
 
 @property (strong,nonatomic) NSMutableString* note;
