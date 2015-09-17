@@ -50,6 +50,25 @@
     self.dbManager = [[DBManager alloc]initWithDatabaseFilename:@"event.sql"];
     
 }
+#pragma - mark method
+- (NSInteger)intervalToDate:(NSDate*)date{
+    NSDate* dateNow = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSDayCalendarUnit
+                                               fromDate:dateNow
+                                                 toDate:date
+                                                options:0];
+    return components.day;
+}
+
+- (NSDate*)stringToDate:(NSString*)string{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+   [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate* deadLineDate = [dateFormatter dateFromString:string];
+    return deadLineDate;
+}
+
+
 #pragma - mark DataBase
 
 - (void)loadData{
@@ -95,9 +114,11 @@
     
     NSMutableDictionary* values = [[NSMutableDictionary alloc]init];
     
+    NSInteger temp = [self intervalToDate:[self stringToDate:eventDeadLine]];
+    
     values[@"eventname"] = eventName;
     values[@"eventpriority"] = eventPriority;
-    values[@"eventdeadline"] = eventDeadLine;
+    values[@"eventdeadline"] = [NSString stringWithFormat:@"%ld",temp];
     
     [cell setLabel:values];
     return cell;

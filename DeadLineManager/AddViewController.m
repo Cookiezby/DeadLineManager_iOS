@@ -168,22 +168,14 @@
 }
 
 - (NSString*)dateString:(NSDate*)date{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents* dateCompontents = [calendar components:(NSYearCalendarUnit| NSMonthCalendarUnit| NSDayCalendarUnit) fromDate:date];
-    NSString* dateString = [NSString stringWithFormat:@"%ld/%ld/%ld",dateCompontents.year,dateCompontents.month,(long)dateCompontents.day];
+    NSDateFormatter* dateformatter = [[NSDateFormatter alloc]init];
+    [dateformatter setDateFormat:@"yyyy-MM-dd"];
+    NSString* dateString = [dateformatter stringFromDate:date];
     return dateString;
 }
 
 - (IBAction)saveEvent:(id)sender{
-    
-    
-    NSDateFormatter* dateformatter = [[NSDateFormatter alloc]init];
-    [dateformatter setDateFormat:@"yyyy-MM-dd"];
-    NSString* dateString = [dateformatter stringFromDate:self.date];
-    NSString* query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.note,dateString];
-    
-    NSLog(@"%@",dateString);
-    
+    NSString* query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.note,[self dateString:self.deadLine]];
     [self.dbManager executeQuery:query];
     
     if (self.dbManager.affectedRows != 0) {
