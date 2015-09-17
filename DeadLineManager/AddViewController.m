@@ -243,7 +243,7 @@
     if([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:0]]==NSOrderedSame){
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell addSubview:self.eventNameTextField];
-        self.eventNameTextField.placeholder = @"EventName";
+        self.eventNameTextField.placeholder = @"記事名";
         [self.eventNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(cell).with.insets(UIEdgeInsetsMake(2, 15, 2, 50));
             //top left bottom right
@@ -261,12 +261,12 @@
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:2 inSection:0]]==NSOrderedSame){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Value1Cell"];
-        cell.textLabel.text = @"Description";
-        cell.detailTextLabel.text = @"Add";
+        cell.textLabel.text = @"記事";
+        cell.detailTextLabel.text = @"添付";
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:0 inSection:1]]==NSOrderedSame) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Value1Cell"];
-        cell.textLabel.text = @"DeadLine";
+        cell.textLabel.text = @"締め切り";
         cell.detailTextLabel.text = [self dateString:self.deadLine];
     }
     if([indexPath compare:[NSIndexPath indexPathForRow:1 inSection:1]]==NSOrderedSame){

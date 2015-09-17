@@ -12,7 +12,7 @@
 #import "DBManager.h"
 
 @interface ViewController ()
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (strong,nonatomic)UITableView* tableView;
 @property (strong,nonatomic)DBManager* dbManager;
 @property (strong,nonatomic)NSArray* eventArr;
@@ -123,4 +123,20 @@
     [cell setLabel:values];
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"editEventSegue" sender:self];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:YES];
+    if (editing) {
+        self.addButton.enabled = NO;
+    } else {
+        self.addButton.enabled = YES;
+    }
+}
+
+
 @end

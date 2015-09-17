@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main-->
+        <!--締め切り一覧-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -19,14 +19,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="Ce8-d3-YDQ">
-                        <barButtonItem key="leftBarButtonItem" title="Setting" id="8DL-Jg-y4d"/>
+                    <navigationItem key="navigationItem" title="締め切り一覧" id="Ce8-d3-YDQ">
+                        <barButtonItem key="leftBarButtonItem" title="編集" id="8DL-Jg-y4d"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="My7-b7-704">
                             <connections>
-                                <segue destination="8Id-t8-Tm7" kind="showDetail" id="nB5-NK-3nq"/>
+                                <segue destination="8Id-t8-Tm7" kind="showDetail" identifier="editEventSegue" id="nB5-NK-3nq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="My7-b7-704" id="BuW-Jo-bHK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,13 +51,13 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="EventEdit" id="STH-eR-3Kn">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a0G-VU-hYa">
+                                    <navigationItem title="詳細" id="STH-eR-3Kn">
+                                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="a0G-VU-hYa">
                                             <connections>
                                                 <action selector="cancelEvent:" destination="8Id-t8-Tm7" id="GhM-pc-18x"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="V0L-FL-JWH">
+                                        <barButtonItem key="rightBarButtonItem" title="セーブ" id="V0L-FL-JWH">
                                             <connections>
                                                 <action selector="saveEvent:" destination="8Id-t8-Tm7" id="IjE-TB-aRi"/>
                                             </connections>
@@ -86,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9I0-tR-hQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831" y="373"/>
+            <point key="canvasLocation" x="1806" y="429"/>
         </scene>
         <!--Note-->
         <scene sceneID="tsE-GI-0xi">
@@ -104,13 +107,13 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Note" id="xDj-EI-DcO">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VH6-a5-doq">
+                                    <navigationItem title="記事" id="xDj-EI-DcO">
+                                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="VH6-a5-doq">
                                             <connections>
                                                 <action selector="cancelEdit:" destination="P5Q-Ey-RL6" id="Ysa-6q-pjL"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VKH-qd-qSV">
+                                        <barButtonItem key="rightBarButtonItem" title="セーブ" id="VKH-qd-qSV">
                                             <connections>
                                                 <action selector="doneEdit:" destination="P5Q-Ey-RL6" id="gaA-p1-Iao"/>
                                             </connections>
@@ -145,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6c-xV-Jp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2633" y="429"/>
+            <point key="canvasLocation" x="2509" y="422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d4c-Fj-7NF">
