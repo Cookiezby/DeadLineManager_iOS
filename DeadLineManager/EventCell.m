@@ -13,8 +13,10 @@
 
 @property (strong,nonatomic) IBOutlet UILabel* eventName;
 @property (strong,nonatomic) IBOutlet UILabel* eventDaysLeft;
-@property (strong,nonatomic) IBOutlet UILabel* eventPriority;
+@property (weak, nonatomic) IBOutlet UIImageView *eventPriorityImage;
 
+@property (nonatomic)NSInteger eventID;
+@property (nonatomic)NSInteger eventPriority;
 
 @end
 
@@ -24,9 +26,6 @@
 - (void)awakeFromNib {
     // Initialization code
     [super awakeFromNib];
-    //[self addSubview:self.eventName];
-    //[self addSubview:self.eventDaysLeft];
-    //[self addSubview:self.eventPriority];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -45,10 +44,27 @@
     return [UINib nibWithNibName:@"EventCell" bundle:[NSBundle mainBundle]];
 }
 
-- (void)setLabel:(NSMutableDictionary*)values{
+- (void)setCell:(NSMutableDictionary*)values{
     self.eventName.text = values[@"eventname"];
-    self.eventPriority.text = values[@"eventpriority"];
     self.eventDaysLeft.text = values[@"eventdeadline"];
+    self.eventPriority = [values[@"eventpriority"] integerValue];
+    self.eventID = [values[@"event_id"]integerValue];
+    
+    switch (self.eventPriority) {
+        case 0:
+            self.eventPriorityImage.image = [UIImage imageNamed:@"circleGreen"];
+            break;
+        case 1:
+            self.eventPriorityImage.image = [UIImage imageNamed:@"circleYellow"];
+            break;
+        case 2:
+            self.eventPriorityImage.image = [UIImage imageNamed:@"circleRed"];
+
+            break;
+        default:
+            break;
+    }
+
 }
     
 

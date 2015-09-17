@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "EventCell.h"
 #import "DBManager.h"
+#import "AddViewController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
@@ -69,6 +70,32 @@
 }
 
 
+- (NSMutableDictionary*)valuesOfIndexPath:(NSIndexPath*)indexPath{
+    NSMutableDictionary* values = [[NSMutableDictionary alloc]init];
+    NSInteger indexOfEventID = [self.dbManager.arrColumnNames indexOfObject:@"event_id"];
+    NSInteger indexOfEventname = [self.dbManager.arrColumnNames indexOfObject:@"eventname"];
+    NSInteger indexOfEventPriority = [self.dbManager.arrColumnNames indexOfObject:@"eventpriority"];
+    NSInteger indexOfEventDeadLine = [self.dbManager.arrColumnNames indexOfObject:@"eventdeadline"];
+    NSInteger indexOfEventDetail = [self.dbManager.arrColumnNames indexOfObject:@"eventdetail"];
+    
+    NSString* eventName = [[self.eventArr objectAtIndex:indexPath.row]objectAtIndex:indexOfEventname];
+    NSString* eventPriority = [[self.eventArr objectAtIndex:indexPath.row]objectAtIndex:indexOfEventPriority];
+    NSString* eventDeadLine = [[self.eventArr objectAtIndex:indexPath.row]objectAtIndex:indexOfEventDeadLine];
+    NSString* event_id = [[self.eventArr objectAtIndex:indexPath.row]objectAtIndex:indexOfEventID];
+    NSString* eventdetail = [[self.eventArr objectAtIndex:indexPath.row]objectAtIndex:indexOfEventDetail];
+    NSInteger daysLeft = [self intervalToDate:[self stringToDate:eventDeadLine]];
+   
+    values[@"event_id"] = event_id;
+    values[@"eventname"] = eventName;
+    values[@"eventpriority"] = eventPriority;
+    values[@"eventdeadline"] = [NSString stringWithFormat:@"%ld",daysLeft];
+    values[@"eventdetail"] = eventdetail;
+    //values[@"eventdate"] = [self stringToDate:eventDeadLine];
+    
+    return values;
+}
+
+
 #pragma - mark DataBase
 
 - (void)loadData{
@@ -104,28 +131,13 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     EventCell* cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
-    NSInteger indexOfEventname = [self.dbManager.arrColumnNames indexOfObject:@"eventname"];
-    NSInteger indexOfEventPriority = [self.dbManager.arrColumnNames indexOfObject:@"eventpriority"];
-    NSInteger indexOfEventDeadLine = [self.dbManager.arrColumnNames indexOfObject:@"eventdeadline"];
-    
-    NSString* eventName = [[self.eventArr objectAtIndex:indexPath.row]objectAtIndex:indexOfEventname];
-    NSString* eventPriority = [[self.eventArr objectAtIndex:indexPath.row]objectAtIndex:indexOfEventPriority];
-    NSString* eventDeadLine = [[self.eventArr objectAtIndex:indexPath.row]objectAtIndex:indexOfEventDeadLine];
-    
-    NSMutableDictionary* values = [[NSMutableDictionary alloc]init];
-    
-    NSInteger temp = [self intervalToDate:[self stringToDate:eventDeadLine]];
-    
-    values[@"eventname"] = eventName;
-    values[@"eventpriority"] = eventPriority;
-    values[@"eventdeadline"] = [NSString stringWithFormat:@"%ld",temp];
-    
-    [cell setLabel:values];
+    [cell setCell:[self valuesOfIndexPath:indexPath]];
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"editEventSegue" sender:self];
+    [self performSegueWithIdentifier:@"editEventSegue" sender:indexPath];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -135,6 +147,13 @@
         self.addButton.enabled = NO;
     } else {
         self.addButton.enabled = YES;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"editEventSegue"]) {
+        AddViewController* addViewController = segue.destinationViewController;
+        [addViewController setEditValues:[self valuesOfIndexPath:(NSIndexPath*)sender]];
     }
 }
 

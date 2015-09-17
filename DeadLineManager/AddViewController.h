@@ -17,6 +17,8 @@
 
 @interface AddViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NoteViewDelegate>
 
-@property (strong,nonatomic) NSMutableString* note;
+@property (strong,nonatomic) NSMutableString* eventDetail;
+
+- (void)setEditValues:(NSMutableDictionary*)values;
 
 @end

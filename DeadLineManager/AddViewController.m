@@ -26,11 +26,14 @@
 @property (strong,nonatomic) UIButton* tagButton_3;
 @property (nonatomic)NSInteger eventPriority;
 
+@property (nonatomic)NSInteger eventID;
+
 @property (strong,nonatomic) NSDate* deadLine;
 
 
 @property CGFloat datePickerCellHeight;
 @property CGFloat tagCellHeight;
+@property (strong,nonatomic)NSMutableDictionary* propertyValues;
 
 @end
 
@@ -39,6 +42,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initProperty];
+    if (self.propertyValues!=nil) {
+        self.eventID = [self.propertyValues[@"event_id"]integerValue];
+        self.eventNameTextField.text = self.propertyValues[@"eventname"];
+        self.eventDetail = self.propertyValues[@"eventdetail"];
+        self.datePicker.date = self.propertyValues[@"eventdate"];
+        self.eventPriority = [self.propertyValues[@"eventpriority"]integerValue];
+    }
+  
+    
     // Do any additional setup after loading the view.
 }
 
@@ -51,7 +63,7 @@
 
 - (void)initProperty{
     self.dbManager = [[DBManager alloc]initWithDatabaseFilename:@"event.sql"];
-    self.note = [NSMutableString stringWithFormat:@"%@",@""];
+    self.eventDetail = [NSMutableString stringWithFormat:@"%@",@""];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.datePickerCellHeight = 0;
@@ -84,6 +96,10 @@
     [self.tagButton_3 addTarget:self action:@selector(tagCellButton:) forControlEvents:UIControlEventTouchUpInside];
     
     self.eventPriority = 2;
+}
+
+- (void)setEditValues:(NSMutableDictionary*)values{
+    self.propertyValues = [[NSMutableDictionary alloc]initWithDictionary:values];
 }
 
 - (IBAction)showTagCellButton:(id)sender{
@@ -175,7 +191,7 @@
 }
 
 - (IBAction)saveEvent:(id)sender{
-    NSString* query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.note,[self dateString:self.deadLine]];
+    NSString* query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.eventDetail,[self dateString:self.deadLine]];
     [self.dbManager executeQuery:query];
     
     if (self.dbManager.affectedRows != 0) {
@@ -198,7 +214,7 @@
 #pragma mark - NoteViewDelegate
 
 - (void)noteFinshEdit:(NSString* )noteString{
-    self.note = [[NSMutableString alloc]initWithFormat:@"%@",noteString];
+    self.eventDetail = [[NSMutableString alloc]initWithFormat:@"%@",noteString];
 }
 #pragma mark - UITableViewDelegate
 
@@ -309,7 +325,7 @@
     if ([segue.identifier isEqualToString:@"addNoteSegue"]) {
         NoteViewController* noteViewController = segue.destinationViewController;
         noteViewController.delegate = self;
-        noteViewController.note = [NSMutableString stringWithFormat:@"%@",self.note];
+        noteViewController.note = [NSMutableString stringWithFormat:@"%@",self.eventDetail];
     }
 }
 
