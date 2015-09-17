@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8F7A5F9C-D7A3-422D-ACEC-6C6EE2C68CCD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DeadLineManager</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6A15946779A4CF9B2B14E1AA212E810EFDD129DD</key>
+		<string>https://github.com/Cookiezby/DeadLineManager_iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DeadLineManager/DeadLineManager.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6A15946779A4CF9B2B14E1AA212E810EFDD129DD</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Cookiezby/DeadLineManager_iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6A15946779A4CF9B2B14E1AA212E810EFDD129DD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6A15946779A4CF9B2B14E1AA212E810EFDD129DD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DeadLineManager_iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
