@@ -17,7 +17,18 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6PH-1d-zLz">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6PH-1d-zLz" secondAttribute="trailing" constant="-16" id="eRi-eK-WMZ"/>
+                            <constraint firstItem="6PH-1d-zLz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="i0g-f8-WOQ"/>
+                            <constraint firstItem="6PH-1d-zLz" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="qHG-qs-FtC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="締め切り一覧" id="Ce8-d3-YDQ">
                         <barButtonItem key="leftBarButtonItem" title="編集" id="8DL-Jg-y4d">
@@ -33,6 +44,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="My7-b7-704" id="BuW-Jo-bHK"/>
+                        <outlet property="searchBar" destination="6PH-1d-zLz" id="Y88-7G-8Sz"/>
                         <segue destination="8Id-t8-Tm7" kind="showDetail" identifier="addEventSegue" id="Ydn-zy-4aH"/>
                         <segue destination="8Id-t8-Tm7" kind="showDetail" identifier="editEventSegue" id="yhi-av-Ead"/>
                     </connections>

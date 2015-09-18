@@ -13,6 +13,7 @@
 #import "AddViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (strong,nonatomic)UITableView* tableView;
 @property (strong,nonatomic)DBManager* dbManager;
@@ -40,12 +41,17 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.top.equalTo(@110);
+        make.left.equalTo(@0);
+        make.right.equalTo(@0);
+        make.bottom.equalTo(@0);
+        //make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 44, 0, 0));
     }];
     
     [self.tableView registerNib:[EventCell nib] forCellReuseIdentifier:@"eventCell"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    ///[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
     
     
     self.dbManager = [[DBManager alloc]initWithDatabaseFilename:@"event.sql"];
@@ -123,12 +129,12 @@
 
 #pragma - mark UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    //return 1;
-    return self.eventArr.count;
+    return 1;
+    //return self.eventArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 70;
 }
 
 
@@ -138,8 +144,8 @@
 #pragma - mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //return self.eventArr.count;
-    return 1;
+    return self.eventArr.count;
+    //return 1;
 }
 
 
@@ -151,6 +157,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"editEventSegue" sender:indexPath];
 }
 
