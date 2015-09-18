@@ -46,7 +46,9 @@
         self.eventID = [self.propertyValues[@"event_id"]integerValue];
         self.eventNameTextField.text = self.propertyValues[@"eventname"];
         self.eventDetail = self.propertyValues[@"eventdetail"];
-        self.datePicker.date = self.propertyValues[@"eventdate"];
+        
+        //这边等把剩余天数为0的数据去掉后再取消注释
+        //self.datePicker.date = self.propertyValues[@"eventdate"];
         self.eventPriority = [self.propertyValues[@"eventpriority"]integerValue];
     }
   

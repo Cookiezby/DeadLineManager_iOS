@@ -49,7 +49,6 @@
     self.eventDaysLeft.text = values[@"eventdeadline"];
     self.eventPriority = [values[@"eventpriority"] integerValue];
     self.eventID = [values[@"event_id"]integerValue];
-    
     switch (self.eventPriority) {
         case 0:
             self.eventPriorityImage.image = [UIImage imageNamed:@"circleGreen"];

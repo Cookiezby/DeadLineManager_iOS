@@ -20,20 +20,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="締め切り一覧" id="Ce8-d3-YDQ">
-                        <barButtonItem key="leftBarButtonItem" title="編集" id="8DL-Jg-y4d"/>
+                        <barButtonItem key="leftBarButtonItem" title="編集" id="8DL-Jg-y4d">
+                            <connections>
+                                <action selector="editTableView:" destination="vXZ-lx-hvc" id="wPb-p1-Pne"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="My7-b7-704">
                             <connections>
-                                <segue destination="8Id-t8-Tm7" kind="showDetail" identifier="editEventSegue" id="nB5-NK-3nq"/>
+                                <action selector="addEvent:" destination="vXZ-lx-hvc" id="Go2-Y7-HTW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="My7-b7-704" id="BuW-Jo-bHK"/>
+                        <segue destination="8Id-t8-Tm7" kind="showDetail" identifier="addEventSegue" id="Ydn-zy-4aH"/>
+                        <segue destination="8Id-t8-Tm7" kind="showDetail" identifier="editEventSegue" id="yhi-av-Ead"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1045" y="429"/>
+            <point key="canvasLocation" x="933" y="422"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="t2q-DK-Na0">
@@ -89,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9I0-tR-hQ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="429"/>
+            <point key="canvasLocation" x="1801" y="422"/>
         </scene>
         <!--Note-->
         <scene sceneID="tsE-GI-0xi">
@@ -169,4 +175,7 @@
             <point key="canvasLocation" x="233" y="429"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yhi-av-Ead"/>
+    </inferredMetricsTieBreakers>
 </document>

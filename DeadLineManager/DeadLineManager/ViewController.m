@@ -95,6 +95,18 @@
     return values;
 }
 
+- (IBAction)addEvent:(id)sender{
+    [self performSegueWithIdentifier:@"addEventSegue" sender:self];
+}
+
+- (IBAction)editTableView:(id)sender{
+    if (!self.tableView.editing) {
+      [self.tableView setEditing:YES animated:YES];
+    }else{
+      [self.tableView setEditing:NO animated:YES];
+    }
+   
+}
 
 #pragma - mark DataBase
 
@@ -111,7 +123,8 @@
 
 #pragma - mark UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    //return 1;
+    return self.eventArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -125,7 +138,8 @@
 #pragma - mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.eventArr.count;
+    //return self.eventArr.count;
+    return 1;
 }
 
 
