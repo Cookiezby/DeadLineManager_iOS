@@ -34,7 +34,6 @@
 @property CGFloat tagCellHeight;
 @property (strong,nonatomic)NSMutableDictionary* propertyValues;
 
-@property (nonatomic)BOOL editInfo;// if add or edit edit is the update
 
 @end
 
@@ -43,15 +42,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initProperty];
-    if (self.propertyValues!=nil) {
+    if (self.editInfo && self.propertyValues!=nil) {
         self.eventID = [self.propertyValues[@"event_id"]integerValue];
         self.eventNameTextField.text = self.propertyValues[@"eventname"];
         self.eventDetail = self.propertyValues[@"eventdetail"];
-        
-        //这边等把剩余天数为0的数据去掉后再取消注释
-        self.datePicker.date = [self dateOffset:[NSDate date] offset:[self.propertyValues[@"eventdeadline"] integerValue]];
+        self.datePicker.date = [self dateOffset:[NSDate date] offset:[self.propertyValues[@"eventdeadline"] integerValue]+1];
         self.eventPriority = [self.propertyValues[@"eventpriority"]integerValue];
-        self.deadLine = [self dateOffset:[NSDate date] offset:[self.propertyValues[@"eventdeadline"] integerValue]];
+        [self setPriorityTagColor:self.eventPriority];
+        self.deadLine = [self dateOffset:[NSDate date] offset:[self.propertyValues[@"eventdeadline"] integerValue]+1];
     }
   
     
@@ -73,7 +71,6 @@
     self.datePickerCellHeight = 0;
     self.tagCellHeight = 0;
     
-    
     self.datePicker  = [UIDatePicker new];
     self.datePicker.alpha = 0;
     [self.datePicker addTarget:self action:@selector(updateDateCell:) forControlEvents:UIControlEventValueChanged];
@@ -82,6 +79,11 @@
     
     self.deadLine = [self dateOffset:[NSDate date] offset:1];
     self.eventNameTextField = [UITextField new];
+    
+    //===========
+    self.showTagRowButton.backgroundColor = [UIColor redColor];
+    
+    
     self.showTagRowButton = [UIButton new];
     [self.showTagRowButton addTarget:self action:@selector(showTagCellButton:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -103,6 +105,23 @@
 
 - (void)setEditValues:(NSMutableDictionary*)values{
     self.propertyValues = [[NSMutableDictionary alloc]initWithDictionary:values];
+}
+
+- (void)setPriorityTagColor:(NSInteger)priority{
+    switch (priority) {
+        case 0:
+            self.showTagRowButton.backgroundColor = [UIColor greenColor];
+            break;
+        case 1:
+            self.showTagRowButton.backgroundColor = [UIColor yellowColor];
+            break;
+        case 2:
+            self.showTagRowButton.backgroundColor = [UIColor redColor];
+
+            break;
+        default:
+            break;
+    }
 }
 
 - (IBAction)showTagCellButton:(id)sender{
@@ -214,11 +233,12 @@
 - (IBAction)saveEvent:(id)sender{
     NSString* query;
     if (self.editInfo) {
-        query = [NSString stringWithFormat:@""];
+        query = [NSString stringWithFormat:@"update event set eventname = '%@' , eventdetail = '%@', eventpriority = '%ld', eventdeadline = '%@' where event_id = '%ld'",self.eventNameTextField.text,self.eventDetail,self.eventPriority,[self dateString:self.deadLine],self.eventID];
     }else{
         query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.eventDetail,[self dateString:self.deadLine]];
     }
-      [self.dbManager executeQuery:query];
+    
+    [self.dbManager executeQuery:query];
     
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
@@ -230,7 +250,7 @@
         NSLog(@"Could not execute the query.");
     }
     
-    [self.delegate addFinish];
+    [self.delegate finish];
     [self dismissViewControllerAnimated:YES completion:^(){}];
 }
 
@@ -291,7 +311,6 @@
             make.edges.equalTo(cell).with.insets(UIEdgeInsetsMake(2, 15, 2, 50));
             //top left bottom right
         }];
-        self.showTagRowButton.backgroundColor = [UIColor redColor];
         [cell addSubview:self.showTagRowButton];
         [self.showTagRowButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(24, 24));

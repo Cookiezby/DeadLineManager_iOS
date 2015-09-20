@@ -201,6 +201,8 @@
     if ([segue.identifier isEqualToString:@"editEventSegue"]) {
         AddViewController* addViewController = segue.destinationViewController;
         [addViewController setEditValues:[self valuesOfIndexPath:(NSIndexPath*)sender]];
+        addViewController.editInfo = YES;
+        addViewController.delegate = self;
         
     }else if([segue.identifier isEqualToString:@"addEventSegue"]){
         AddViewController* addViewController = segue.destinationViewController;
@@ -210,10 +212,9 @@
 
 #pragma - mark AddViewDelegate
 
-- (void)addFinish{
+- (void)finish{
     [self loadData];
     [self.tableView reloadData];
-    NSLog(@"addFinish");
 }
 
 

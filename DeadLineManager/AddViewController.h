@@ -11,7 +11,7 @@
 
 @protocol AddViewDelegate
 
-- (void)addFinish;
+- (void)finish;
 
 @end
 
@@ -19,6 +19,9 @@
 
 @property (strong,nonatomic) NSMutableString* eventDetail;
 @property (strong,nonatomic)id<AddViewDelegate>delegate;
+
+@property (nonatomic)BOOL editInfo;// if add or edit edit is the update
+
 
 - (void)setEditValues:(NSMutableDictionary*)values;
 
