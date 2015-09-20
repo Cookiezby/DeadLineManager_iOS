@@ -15,7 +15,7 @@
 @property (strong,nonatomic) IBOutlet UILabel* eventDaysLeft;
 @property (weak, nonatomic) IBOutlet UIImageView *eventPriorityImage;
 
-@property (nonatomic)NSInteger eventID;
+
 @property (nonatomic)NSInteger eventPriority;
 
 @end

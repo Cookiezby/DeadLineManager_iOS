@@ -27,13 +27,14 @@
 @property (nonatomic)NSInteger eventPriority;
 
 @property (nonatomic)NSInteger eventID;
-
 @property (strong,nonatomic) NSDate* deadLine;
 
 
 @property CGFloat datePickerCellHeight;
 @property CGFloat tagCellHeight;
 @property (strong,nonatomic)NSMutableDictionary* propertyValues;
+
+@property (nonatomic)BOOL editInfo;// if add or edit edit is the update
 
 @end
 
@@ -48,8 +49,9 @@
         self.eventDetail = self.propertyValues[@"eventdetail"];
         
         //这边等把剩余天数为0的数据去掉后再取消注释
-        //self.datePicker.date = self.propertyValues[@"eventdate"];
+        self.datePicker.date = [self dateOffset:[NSDate date] offset:[self.propertyValues[@"eventdeadline"] integerValue]];
         self.eventPriority = [self.propertyValues[@"eventpriority"]integerValue];
+        self.deadLine = [self dateOffset:[NSDate date] offset:[self.propertyValues[@"eventdeadline"] integerValue]];
     }
   
     
@@ -76,10 +78,9 @@
     self.datePicker.alpha = 0;
     [self.datePicker addTarget:self action:@selector(updateDateCell:) forControlEvents:UIControlEventValueChanged];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
-    self.datePicker.minimumDate = [NSDate date];
+    self.datePicker.minimumDate = [self dateOffset:[NSDate date] offset:1];
     
-    self.deadLine = [NSDate date];
-    
+    self.deadLine = [self dateOffset:[NSDate date] offset:1];
     self.eventNameTextField = [UITextField new];
     self.showTagRowButton = [UIButton new];
     [self.showTagRowButton addTarget:self action:@selector(showTagCellButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -185,6 +186,13 @@
     
 }
 
+- (NSDate*)stringToDate:(NSString*)string{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate* deadLineDate = [dateFormatter dateFromString:string];
+    return deadLineDate;
+}
+
 - (NSString*)dateString:(NSDate*)date{
     NSDateFormatter* dateformatter = [[NSDateFormatter alloc]init];
     [dateformatter setDateFormat:@"yyyy-MM-dd"];
@@ -192,9 +200,25 @@
     return dateString;
 }
 
+- (NSDate*)dateOffset:(NSDate*)date offset:(NSInteger)offset{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    // now build a NSDate object for the next day
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setDay:offset];
+    NSDate *nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:date options:0];
+  
+    return nextDate;
+    
+}
+
 - (IBAction)saveEvent:(id)sender{
-    NSString* query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.eventDetail,[self dateString:self.deadLine]];
-    [self.dbManager executeQuery:query];
+    NSString* query;
+    if (self.editInfo) {
+        query = [NSString stringWithFormat:@""];
+    }else{
+        query = [NSString stringWithFormat:@"insert into event values(null, '%@', '%ld', '%@' , '%@')",self.eventNameTextField.text,self.eventPriority,self.eventDetail,[self dateString:self.deadLine]];
+    }
+      [self.dbManager executeQuery:query];
     
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
@@ -206,6 +230,7 @@
         NSLog(@"Could not execute the query.");
     }
     
+    [self.delegate addFinish];
     [self dismissViewControllerAnimated:YES completion:^(){}];
 }
 

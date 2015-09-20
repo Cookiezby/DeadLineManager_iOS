@@ -10,6 +10,8 @@
 
 @interface EventCell : UITableViewCell
 
+@property (nonatomic)NSInteger eventID;
+
 + (UINib*)nib;
 
 - (void)setCell:(NSMutableDictionary*)values;

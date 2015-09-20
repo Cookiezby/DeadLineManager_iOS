@@ -23,7 +23,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9uS-lM-QAh">
-                        <rect key="frame" x="327" y="25" width="21" height="22"/>
+                        <rect key="frame" x="326" y="24" width="21" height="22"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <color key="textColor" red="0.99634176587301593" green="0.99634176587301593" blue="0.99634176587301593" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>

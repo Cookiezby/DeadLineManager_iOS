@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property (strong,nonatomic)UITableView* tableView;
 @property (strong,nonatomic)DBManager* dbManager;
-@property (strong,nonatomic)NSArray* eventArr;
+@property (strong,nonatomic)NSMutableArray* eventArr;
 //@property
 
 @end
@@ -51,7 +51,7 @@
     [self.tableView registerNib:[EventCell nib] forCellReuseIdentifier:@"eventCell"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    ///[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
     
     
     self.dbManager = [[DBManager alloc]initWithDatabaseFilename:@"event.sql"];
@@ -121,11 +121,25 @@
     if(self.eventArr != nil){
         self.eventArr = nil;
     }
-    
-    self.eventArr = [[NSArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
+    self.eventArr = [[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
     [self.tableView reloadData];
 }
 
+
+- (void)deleteDate:(NSInteger)eventid{
+    NSString* query = [NSString stringWithFormat:@"delete from event where event_id = %ld",eventid];
+    [self.dbManager executeQuery:query];
+    
+    if (self.dbManager.affectedRows != 0) {
+        NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
+        
+        // Pop the view controller.
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
+        NSLog(@"Could not execute the query.");
+    }
+}
 
 #pragma - mark UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -171,11 +185,35 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        EventCell* cell = (EventCell*)[tableView cellForRowAtIndexPath:indexPath];
+        [self.eventArr removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self deleteDate:cell.eventID];
+
+    }
+}
+
+#pragma - mark NavigationController
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"editEventSegue"]) {
         AddViewController* addViewController = segue.destinationViewController;
         [addViewController setEditValues:[self valuesOfIndexPath:(NSIndexPath*)sender]];
+        
+    }else if([segue.identifier isEqualToString:@"addEventSegue"]){
+        AddViewController* addViewController = segue.destinationViewController;
+        addViewController.delegate = self;
     }
+}
+
+#pragma - mark AddViewDelegate
+
+- (void)addFinish{
+    [self loadData];
+    [self.tableView reloadData];
+    NSLog(@"addFinish");
 }
 
 
