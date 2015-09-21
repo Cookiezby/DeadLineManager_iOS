@@ -80,10 +80,6 @@
     self.deadLine = [self dateOffset:[NSDate date] offset:1];
     self.eventNameTextField = [UITextField new];
     
-    //===========
-    self.showTagRowButton.backgroundColor = [UIColor redColor];
-    
-    
     self.showTagRowButton = [UIButton new];
     [self.showTagRowButton addTarget:self action:@selector(showTagCellButton:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -312,6 +308,9 @@
             //top left bottom right
         }];
         [cell addSubview:self.showTagRowButton];
+        if(!self.editInfo){
+            self.showTagRowButton.backgroundColor = [UIColor redColor];
+        }
         [self.showTagRowButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(24, 24));
             make.top.equalTo(@10);

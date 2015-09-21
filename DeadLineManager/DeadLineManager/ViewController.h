@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddViewController.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,AddViewDelegate>
+@interface ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,AddViewDelegate,UISearchBarDelegate>
 
 
 @end

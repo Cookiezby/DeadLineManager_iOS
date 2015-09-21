@@ -44,7 +44,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="My7-b7-704" id="BuW-Jo-bHK"/>
-                        <outlet property="searchBar" destination="6PH-1d-zLz" id="Y88-7G-8Sz"/>
+                        <outlet property="searchBar" destination="6PH-1d-zLz" id="wDG-H6-Zqt"/>
                         <segue destination="8Id-t8-Tm7" kind="showDetail" identifier="addEventSegue" id="Ydn-zy-4aH"/>
                         <segue destination="8Id-t8-Tm7" kind="showDetail" identifier="editEventSegue" id="yhi-av-Ead"/>
                     </connections>

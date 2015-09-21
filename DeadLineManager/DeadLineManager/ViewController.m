@@ -18,7 +18,9 @@
 @property (strong,nonatomic)UITableView* tableView;
 @property (strong,nonatomic)DBManager* dbManager;
 @property (strong,nonatomic)NSMutableArray* eventArr;
-//@property
+
+
+
 
 @end
 
@@ -55,7 +57,7 @@
     
     
     self.dbManager = [[DBManager alloc]initWithDatabaseFilename:@"event.sql"];
-    
+    self.searchBar.delegate = self;
 }
 #pragma - mark method
 - (NSInteger)intervalToDate:(NSDate*)date{
@@ -119,6 +121,15 @@
 - (void)loadData{
     NSString* query = @"select * from event";
     if(self.eventArr != nil){
+        self.eventArr = nil;
+    }
+    self.eventArr = [[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
+    [self.tableView reloadData];
+}
+
+- (void)searchEvent:(NSString*)keyWord{
+    NSString* query = [NSString stringWithFormat:@"select * from event where eventname like '%%%@%%'",keyWord];
+    if (self.eventArr!= nil) {
         self.eventArr = nil;
     }
     self.eventArr = [[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
@@ -194,6 +205,12 @@
 
     }
 }
+#pragma - mark UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    [self searchEvent:searchText];
+}
+
 
 #pragma - mark NavigationController
 
