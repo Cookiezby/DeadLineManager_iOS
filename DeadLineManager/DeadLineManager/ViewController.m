@@ -58,6 +58,7 @@
     
     self.dbManager = [[DBManager alloc]initWithDatabaseFilename:@"event.sql"];
     self.searchBar.delegate = self;
+    
 }
 #pragma - mark method
 - (NSInteger)intervalToDate:(NSDate*)date{
@@ -210,6 +211,15 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     [self searchEvent:searchText];
 }
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [self.searchBar resignFirstResponder];
+}
+
 
 
 #pragma - mark NavigationController
