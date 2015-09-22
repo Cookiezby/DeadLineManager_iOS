@@ -30,6 +30,7 @@
     [super viewDidLoad];
     [self initProperty];
     [self loadData];
+    [self addTap];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -61,6 +62,18 @@
     
 }
 #pragma - mark method
+- (void)addTap{
+    UITapGestureRecognizer* oneTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyboard)];
+    oneTap.delegate = self;
+    oneTap.numberOfTapsRequired = 1;
+    [self.tableView addGestureRecognizer:oneTap];
+    oneTap.cancelsTouchesInView = NO;
+}
+
+- (void)hideKeyboard{
+    [self.searchBar resignFirstResponder];
+}
+
 - (NSInteger)intervalToDate:(NSDate*)date{
     NSDate* dateNow = [NSDate date];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -144,9 +157,6 @@
     
     if (self.dbManager.affectedRows != 0) {
         NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
-        
-        // Pop the view controller.
-        [self.navigationController popViewControllerAnimated:YES];
     }
     else{
         NSLog(@"Could not execute the query.");
@@ -203,7 +213,6 @@
         [self.eventArr removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self deleteDate:cell.eventID];
-
     }
 }
 #pragma - mark UISearchBarDelegate

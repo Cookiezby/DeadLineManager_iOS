@@ -42,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initProperty];
+    [self addTap];
     if (self.editInfo && self.propertyValues!=nil) {
         self.eventID = [self.propertyValues[@"event_id"]integerValue];
         self.eventNameTextField.text = self.propertyValues[@"eventname"];
@@ -121,6 +122,7 @@
 }
 
 - (IBAction)showTagCellButton:(id)sender{
+    [self.eventNameTextField resignFirstResponder];
     self.tagCellHeight = self.tagCellHeight == 0 ? 44:0;
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
     self.tagCellHeight != 0 ? [self showTagCell]:[self hideTagCell];
@@ -199,6 +201,18 @@
         self.datePicker.alpha = 0;
     }];
     
+}
+
+- (void)addTap{
+    UITapGestureRecognizer* oneTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyboard)];
+    oneTap.delegate = self;
+    oneTap.numberOfTapsRequired = 1;
+    [self.tableView addGestureRecognizer:oneTap];
+    oneTap.cancelsTouchesInView = NO;
+}
+
+- (void)hideKeyboard{
+    [self.eventNameTextField resignFirstResponder];
 }
 
 - (NSDate*)stringToDate:(NSString*)string{

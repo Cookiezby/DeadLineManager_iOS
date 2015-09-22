@@ -15,7 +15,7 @@
 
 @end
 
-@interface AddViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NoteViewDelegate>
+@interface AddViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NoteViewDelegate,UIGestureRecognizerDelegate>
 
 @property (strong,nonatomic) NSMutableString* eventDetail;
 @property (strong,nonatomic)id<AddViewDelegate>delegate;
