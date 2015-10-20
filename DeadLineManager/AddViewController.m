@@ -214,6 +214,13 @@
 - (void)hideKeyboard{
     [self.eventNameTextField resignFirstResponder];
 }
+/*- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if (touch.view != self.eventNameTextField) {
+        return NO;
+        
+    }//其实这个方法是限制gestrueRecognizer只在某个view里面有效，和隐藏键盘不同，隐藏键盘正是要点击textfield外面才行
+    return YES;
+}*/
 
 - (NSDate*)stringToDate:(NSString*)string{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -374,6 +381,11 @@
     }
 }
 
+#pragma mark - UILocalNotification
+
+- (void)setNotification{
+    
+}
 
 
 
